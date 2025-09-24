@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Interface Specialist Application - Mohammed Raees Nazeem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #fe4501;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #222020;
+            color: white;
+            padding: 0.6rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span{
+            font-size:19px;
+            line-height: 27px;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 80px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        h2.section-title{
+            font-size: 36px;
+            line-height: 43px;
+            font-weight: 500;
+            color: #222020;
+        }
+
+        h2.section-title span{
+            color: #fe4501;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-30px, -30px) rotate(180deg);
+            }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height:53px;
+            font-weight:500;
+            margin-bottom: 1rem;
+            background: #fe4501;
+            color: #fe4501;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        /* --- NEW BUTTON STYLES --- */
+        .cta-button,
+        .submit-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 2rem;
+            background-color: var(--bg-white);
+            color: var(--text-primary);
+            border: 2px solid var(--text-primary);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 280px;
+            box-shadow: var(--shadow);
+            animation: slideInLeft 0.8s ease-out 0.4s both;
+        }
+
+        .cta-button:hover,
+        .submit-button:hover {
+            background-color: var(--text-primary);
+            color: var(--bg-white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button svg,
+        .submit-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover svg,
+        .submit-button:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* --- END NEW BUTTON STYLES --- */
+
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .code-window {
+            background: var(--bg-white);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .window-header {
+            background: #f3f4f6;
+            padding: 0.75rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ef4444;
+        }
+
+        .dot-yellow {
+            background: #f59e0b;
+        }
+
+        .dot-green {
+            background: #10b981;
+        }
+
+        .code-content {
+            padding: 1.5rem;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .code-line {
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: typeWriter 0.5s ease-out forwards;
+        }
+
+        .code-line:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .code-line:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .code-line:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+
+        .code-line:nth-child(4) {
+            animation-delay: 2s;
+        }
+
+        .code-line:nth-child(5) {
+            animation-delay: 2.5s;
+        }
+
+        @keyframes typeWriter {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: var(--bg-white);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .skill-level {
+            margin-top: 0.75rem;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid var(--bg-white);
+            box-shadow: 0 0 0 3px var(--primary-color);
+        }
+
+        .timeline-content {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-left: 1rem;
+        }
+
+       
+        /* Contact Form */
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+         .portfolio {
+            background: url("bg_block_green.avif");
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .portfolio p{
+            max-width:400px;
+        }
+
+        .professional-experience{
+            background: url("bg_block_blue.avif");
+            background-position: top left;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <span>Mohammed Raees Nazeem - Customer Interface Specialist Application</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Customer Interface Specialist</h1>
+                <p>Bringing passion, precision, and pixel-perfect code to NAVEX's mission of making the world a better
+                    place.</p>
+                <a href="#contact" class="cta-button">
+                    <span>Let's Connect</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M13 18L19 12L13 6" />
+                    </svg>
+                </a>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-dot dot-red"></div>
+                        <div class="window-dot dot-yellow"></div>
+                        <div class="window-dot dot-green"></div>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-line"><span style="color: #3b82f6;">const</span> <span
+                                style="color: #1f2937;">developer</span> = {</div>
+                        <div class="code-line"> <span style="color: #1f2937;">name</span>: <span
+                                style="color: #10b981;">"Raees"</span>,</div>
+                        <div class="code-line"> <span style="color: #1f2937;">role</span>: <span
+                                style="color: #10b981;">"Customer Interface Specialist"</span>,</div>
+                        <div class="code-line"> <span style="color: #1f2937;">passion</span>: <span
+                                style="color: #10b981;">"Creating ethical tech solutions"</span>,</div>
+                        <div class="code-line"> <span style="color: #1f2937;">ready</span>: <span
+                                style="color: #3b82f6;">true</span></div>
+                        <div class="code-line">};</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <div class="section">
+            <h2 class="section-title">
+                About Me
+            </h2>
+            <p>I'm a passionate web developer with 3+ years of experience creating user-friendly interfaces and managing
+                complex data systems. Like NAVEX, I believe technology should make the world a better, more ethical
+                place. My combination of technical skills, attention to detail, and commitment to customer success makes
+                me an ideal candidate for the Customer Interface Specialist role.</p>
+
+            <p>I'm excited about the opportunity to contribute to NAVEX's mission of providing ethical solutions that
+                give people a voice. Your focus on career growth, work-life balance, and creating meaningful impact
+                aligns perfectly with my professional goals.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <div class="section">
+            <h2 class="section-title">
+                Technical Skills
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <div class="skill-header">
+                        
+                        <div>
+                            <h3>HTML/CSS</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">3+ Years</p>
+                        </div>
+                    </div>
+                    <p>Semantic HTML5, CSS3, Flexbox, Grid, Responsive Design</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="95"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <div class="skill-header">
+                       
+                        <div>
+                            <h3>JavaScript</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">3+ Years</p>
+                        </div>
+                    </div>
+                    <p>ES6+, DOM Manipulation, JSON, AJAX, APIs</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="90"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <div class="skill-header">
+                        
+                        <div>
+                            <h3>Graphic Design</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">2+ Years</p>
+                        </div>
+                    </div>
+                    <p>UI/UX, Color Theory, Layout, Accessibility</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="85"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <div class="skill-header">
+                        
+                        <div>
+                            <h3>Database Management</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">2+ Years</p>
+                        </div>
+                    </div>
+                    <p>SQL, Data Structures, JSON, CSV Processing</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="80"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <div class="skill-header">
+                       
+                        <div>
+                            <h3>Web Tools</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">Various</p>
+                        </div>
+                    </div>
+                    <p>Git, VS Code, Chrome DevTools, Figma</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="88"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" onclick="animateSkill(this)">
+                    <div class="skill-header">
+                        
+                        <div>
+                            <h3>Localization</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">1+ Year</p>
+                        </div>
+                    </div>
+                    <p>Multi-language Support, i18n, Cultural Adaptation</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="75"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="container">
+        <div class="section professional-experience">
+            <h2 class="section-title">
+                
+                <span>Professional Experience</span>
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Tech Lead - Frontend Developer</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Growth99 Holdings LLC (IGX Technologies India Pvt Ltd) . &nbsp; • Aug 2022 – Present</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                            <li>Led a team of 25 developers and 12 Project managers and implemented project workflows, enhancing overall efficiency by 25%.</li>
+                            <li>Built an effective page generation dashboard in react that works with Elementor page builder.</li>
+                            <li>Built internal tools with JavaScript, React and assisted in automation tasks improving output by 50%.</li>
+                            <li>Worked extensively on accessibility implementation and built new processes around it.</li>
+                            <li>Worked with UI/UX teams to deliver outstanding websites.</li>
+                            <li>Optimized website performance for faster load times increasing ratings by up to 60%.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Web and App Development Professional</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Self-Owned Agency providing web and app development services  &nbsp; •  Jan 2018 - Feb 2022</p>
+                        <ul style="margin-left: 1.5rem; color: var(--text-secondary);">
+                            <li>Built custom landing pages using HTML, CSS, and JavaScript</li>
+                            <li>Developed custom web solutions for a diverse clientele.</li>
+                            <li>Solutions using React, Javascript, PHP, wordpress, MySQL, MongoDB and Node with Express JS.</li>
+                            <li>Designed prototypes in Figma, web intake graphics and flyers in photoshop</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="section">
+            <h2 class="section-title">
+                Why I'm Excited About NAVEX
+            </h2>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: 0.75rem;">
+                    <h3 style="color: #222020; margin-bottom: 1rem;">Making a Difference</h3>
+                    <p>Your mission of making the world a better, more ethical place resonates deeply with me. I want my
+                        code to have purpose and positive impact.</p>
+                </div>
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: 0.75rem;">
+                    <h3 style="color: #222020; margin-bottom: 1rem;">Career Growth</h3>
+                    <p>Your commitment to career planning and market-leading training aligns with my goal of continuous
+                        learning and professional development.</p>
+                </div>
+                <div style="background: var(--bg-light); padding: 2rem; border-radius: 0.75rem;">
+                    <h3 style="color: #222020; margin-bottom: 1rem;">Team Collaboration</h3>
+                    <p>I thrive in respectful, close-knit teams and am excited about the hybrid work model that balances
+                        collaboration with flexibility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <div class="section portfolio">
+            <h2 class="section-title">
+               View My Portfolio
+            </h2>
+            <p>I'm excited at the opportunity to bring my technical expertise and passion for ethical technology to NAVEX I'd love to discuss
+                how my skills align with your Customer Interface Specialist role.</p><br/><br/>
+
+                <a href="https://portfolio.raeescodes.xyz" target="_blank" class="cta-button">
+                    <span>Portfolio</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M13 18L19 12L13 6" />
+                    </svg>
+                </a>
+
+          
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Mohammed Raees Nazeem. Ready to make the world better with NAVEX.</p>
+            <div class="social-links">
+                <a href="#" class="social-link" title="LinkedIn">
+                    <span>in</span>
+                </a>
+                <a href="#" class="social-link" title="GitHub">
+                    <span>gh</span>
+                </a>
+                <a href="#" class="social-link" title="Email">
+                    <span>@</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hide loader when page loads
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Animate skill progress bars
+                    if (entry.target.id === 'skills') {
+                        setTimeout(() => {
+                            document.querySelectorAll('.skill-progress').forEach(bar => {
+                                const level = bar.getAttribute('data-level');
+                                bar.style.width = level + '%';
+                            });
+                        }, 500);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Skill card animation
+        function animateSkill(card) {
+            const progressBar = card.querySelector('.skill-progress');
+            const currentWidth = progressBar.style.width;
+            progressBar.style.width = '0%';
+
+            setTimeout(() => {
+                const level = progressBar.getAttribute('data-level');
+                progressBar.style.width = level + '%';
+            }, 100);
+
+            // Add a little bounce effect
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                card.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const button = event.target.querySelector('.submit-button');
+            const originalText = button.querySelector('span').textContent;
+
+            // Show loading state
+            button.querySelector('span').textContent = 'Sending...';
+            button.disabled = true;
+
+            // Simulate form submission
+            setTimeout(() => {
+                button.querySelector('span').textContent = 'Message Sent!';
+                button.style.background = 'var(--success-color)';
+
+                // Reset form
+                event.target.reset();
+
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    button.querySelector('span').textContent = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                }, 3000);
+            }, 1500);
+        }
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+
+        // Add typing effect to code window on scroll
+        let codeAnimated = false;
+        window.addEventListener('scroll', () => {
+            const codeWindow = document.querySelector('.code-window');
+            const codeWindowTop = codeWindow.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (codeWindowTop < windowHeight && !codeAnimated) {
+                codeAnimated = true;
+                const codeLines = document.querySelectorAll('.code-line');
+                codeLines.forEach((line, index) => {
+                    setTimeout(() => {
+                        line.style.opacity = '1';
+                    }, index * 200);
+                });
+            }
+        });
+
+        // Add hover effect to skill cards
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+
+</html>
